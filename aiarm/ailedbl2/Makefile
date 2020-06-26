@@ -41,4 +41,4 @@ clean:
 	cd $(AIOUT_DIR) && rm -f *.dis *.o *.elf
 
 clobber : clean
-	rm -f $(AIOUT_DIR)
+	rm -rf $(AIOUT_DIR)
