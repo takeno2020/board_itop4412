@@ -92,14 +92,13 @@ init_stack:
     mov sp, r0
     
     b main
-
-	.align	4
+    
 
 	/* irq_handler */
+    .align	4
 irq_handler:
     sub  lr, lr, #4
     stmfd sp!, {r0 - r12, lr}
-    .weak do_irq
     bl do_irq
     ldmfd sp!, {r0 - r12, pc}^
 
