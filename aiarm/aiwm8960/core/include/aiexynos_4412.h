@@ -940,7 +940,7 @@ typedef struct {
     unsigned    long    STATUS0;
     unsigned    long    STATUS1;
     unsigned    long    STATUS2;
-    unsigned    long    STATUS3
+    unsigned    long    STATUS3;
 } icdspi_status_t;
 
 #define        ICDSPI_STATUS        (*((volatile icdspi_status_t *)0X10490D04))
@@ -1036,6 +1036,33 @@ typedef struct {
 #define    INTERRUPT_COMBINER    (*((volatile interrupt_combiner_t *)0X10440000))
 #define    CIPSR0                __REG(0X10440100)
 
+
+/*******************************************************************************
+ *                                    UART
+ ******************************************************************************/
+typedef struct {
+    unsigned    long    ULCON;
+    unsigned    long    UCON;
+    unsigned    long    UFCON;
+    unsigned    long    UMCON;
+    unsigned    long    UTRSTAT;
+    unsigned    long    UERSTAT;
+    unsigned    long    UFSTAT;
+    unsigned    long    UMSTAT;
+    unsigned    long    UTXH;
+    unsigned    long    URXH;
+    unsigned    long    UBRDIV;
+    unsigned    long    UFRACVAL;
+    unsigned    long    UINTP;
+    unsigned    long    UINTSP;
+    unsigned    long    UINTM;
+} uart_t;
+
+#define        UART0        (*((volatile uart_t *)0X13800000))
+#define        UART1        (*((volatile uart_t *)0X13810000))
+#define        UART2        (*((volatile uart_t *)0X13820000))
+#define        UART3        (*((volatile uart_t *)0X13830000))
+#define        UART4        (*((volatile uart_t *)0X13840000))
 
 
 #ifdef __cplusplus

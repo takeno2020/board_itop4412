@@ -23,10 +23,12 @@ CFLAGS += -Wall \
 ################################################################################
 # 头文件和源文件
 ################################################################################
-INCLUDES = -I./core/include
+INCLUDES = -I./core/include \
+		   -I./hardware/uart
 
 SRC_FILES = $(wildcard core/src/*.c) \
 			$(wildcard start/*.S) \
+			$(wildcard hardware/uart/*.c) \
 			$(wildcard *.c)
 
 OBJS := $(patsubst %.S, %.o, $(filter %.S, $(SRC_FILES)))
