@@ -1065,6 +1065,28 @@ typedef struct {
 #define        UART4        (*((volatile uart_t *)0X13840000))
 
 
+/*******************************************************************************
+ *                                    I2C
+ ******************************************************************************/
+typedef struct {
+    unsigned    long    CON;
+    unsigned    long    STAT;
+    unsigned    long    ADD;    // address register
+    unsigned    long    DS;     // transmit/receive data shift register
+    unsigned    long    LC;     // multi-master line control register
+} i2c_t;
+
+#define        I2C0        (*((volatile i2c_t *)0X13860000))
+#define        I2C1        (*((volatile i2c_t *)0X13870000))
+#define        I2C2        (*((volatile i2c_t *)0X13880000))
+#define        I2C3        (*((volatile i2c_t *)0X13890000))
+#define        I2C4        (*((volatile i2c_t *)0X138A0000))
+#define        I2C5        (*((volatile i2c_t *)0X138B0000))
+#define        I2C6        (*((volatile i2c_t *)0X138C0000))
+#define        I2C7        (*((volatile i2c_t *)0X138D0000))
+#define        I2C8        (*((volatile i2c_t *)0X138E0000))
+
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

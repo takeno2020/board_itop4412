@@ -29,6 +29,7 @@ INCLUDES = -I./core/include \
 SRC_FILES = $(wildcard core/src/*.c) \
 			$(wildcard start/*.S) \
 			$(wildcard hardware/uart/*.c) \
+			$(wildcard hardware/i2c/*.c) \
 			$(wildcard *.c)
 
 OBJS := $(patsubst %.S, %.o, $(filter %.S, $(SRC_FILES)))
