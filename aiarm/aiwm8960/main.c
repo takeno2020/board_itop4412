@@ -15,10 +15,28 @@
  *
  * =============================================================================
  */
+#include "aiuart.h"
+
+void aidelay_ms(unsigned int t)
+{
+    unsigned int i, j;
+    for (i = 0; i < t; i++)
+        for (j = 0; j < 3000; j++)
+            ;
+}
 
 /************************************ main ************************************/
 int main(int argc, char *arg[])
 {
+    char ch = '\0';
+
+    while (1) {
+        ch = getc();
+        if (ch)
+            putc('M');
+        puts("takeno !\n");
+        aidelay_ms(2000);
+    }
 
     return 0;
 }

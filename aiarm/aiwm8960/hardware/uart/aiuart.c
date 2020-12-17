@@ -31,7 +31,7 @@ void aiuart_init(void)
     UART2.UCON = 0x5;
     // 波特率: src clock - 100MHz
     UART2.UBRDIV = 0x35;
-    UART2.UFRACVAL = 0x5;
+    UART2.UFRACVAL = 0x4;
 }
 
 void putc(const char ch)
@@ -48,4 +48,12 @@ void puts(const char *str)
     if (str != NULL)
         while (*str != '\0')
             putc(*str++);
+}
+
+char getc(void)
+{
+    if (UART2.UTRSTAT & 0x1)
+        return UART2.URXH;
+    else
+        return 0;
 }

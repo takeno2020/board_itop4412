@@ -22,6 +22,7 @@
 void aiuart_init(void);
 void putc(const char ch);
 void puts(const char *str);
+char getc(void);
 
 
 #endif /* AI_UART_H_ */
