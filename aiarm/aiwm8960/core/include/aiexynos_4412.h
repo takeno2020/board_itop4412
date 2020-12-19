@@ -1086,6 +1086,37 @@ typedef struct {
 #define        I2C7        (*((volatile i2c_t *)0X138D0000))
 #define        I2C8        (*((volatile i2c_t *)0X138E0000))
 
+/*******************************************************************************
+ *                              Audio Subsystem
+ ******************************************************************************/
+#define        ASS_CLK_SRC        __REG(0X03810000)
+#define        ASS_CLK_DIV        __REG(0X03810004)
+#define        ASS_CLK_GATE       __REG(0X03810008)
+
+/*******************************************************************************
+ *                          IIS Multi Audio Interface
+ ******************************************************************************/
+typedef struct {
+    unsigned    long    CON;
+    unsigned    long    MOD;
+    unsigned    long    FIC;
+    unsigned    long    PSR;
+    unsigned    long    TXD;
+    unsigned    long    RXD;
+    unsigned    long    FICS;
+    unsigned    long    TXDS;
+    unsigned    long    AHB;
+    unsigned    long    STR0;
+    unsigned    long    SIZE;
+    unsigned    long    TRNCNT;
+    unsigned    long    LVL0ADDR;
+    unsigned    long    LVL1ADDR;
+    unsigned    long    LVL2ADDR;
+    unsigned    long    LVL3ADDR;
+    unsigned    long    STR1;
+} i2s0_t;
+
+#define        I2S0        (*((volatile i2s0_t *)0X03830000))
 
 #ifdef __cplusplus
 }

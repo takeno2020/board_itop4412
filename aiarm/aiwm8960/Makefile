@@ -24,12 +24,17 @@ CFLAGS += -Wall \
 # 头文件和源文件
 ################################################################################
 INCLUDES = -I./core/include \
-		   -I./hardware/uart
+		   -I./hardware/uart \
+		   -I./hardware/i2c \
+		   -I./hardware/i2s \
+		   -I./hardware/wm8960
 
 SRC_FILES = $(wildcard core/src/*.c) \
 			$(wildcard start/*.S) \
 			$(wildcard hardware/uart/*.c) \
 			$(wildcard hardware/i2c/*.c) \
+			$(wildcard hardware/i2s/*.c) \
+			$(wildcard hardware/wm8960/*.c) \
 			$(wildcard *.c)
 
 OBJS := $(patsubst %.S, %.o, $(filter %.S, $(SRC_FILES)))

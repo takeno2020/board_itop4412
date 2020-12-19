@@ -16,6 +16,9 @@
  * =============================================================================
  */
 #include "aiuart.h"
+#include "aii2c.h"
+#include "aii2s.h"
+#include "aiwm8960.h"
 
 void aidelay_ms(unsigned int t)
 {
