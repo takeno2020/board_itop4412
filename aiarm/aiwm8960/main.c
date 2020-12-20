@@ -19,6 +19,9 @@
 #include "aii2c.h"
 #include "aii2s.h"
 #include "aiwm8960.h"
+#include "aitypes.h"
+#include "aiexynos_4412.h"
+#include "aiwave.h"
 
 void aidelay_ms(unsigned int t)
 {
@@ -31,14 +34,33 @@ void aidelay_ms(unsigned int t)
 /************************************ main ************************************/
 int main(int argc, char *arg[])
 {
-    char ch = '\0';
+    unsigned long offset = 0xb;
+    u32 *tmp = (u32 *)wave_data;
+    u32 tmp_s;
+
+    aii2c_init();
+    aiwm8960_init();
+    aii2s0_init();
+    aii2s0_start();
 
     while (1) {
-        ch = getc();
-        if (ch)
-            putc('M');
-        puts("takeno !\n");
-        aidelay_ms(2000);
+        while ((I2S0.CON & (0x1 << 8)) == (0x1 << 8))
+            ;
+        I2S0.TXD = *(tmp + offset);
+#if 0
+        tmp_s = *(tmp + offset);
+        aiuart_print_hex(tmp_s & 0xff);
+        putc(' ');
+        aiuart_print_hex((tmp_s >> 8) & 0xff);
+        putc(' ');
+        aiuart_print_hex((tmp_s >> 16) & 0xff);
+        putc(' ');
+        aiuart_print_hex((tmp_s >> 24) & 0xff);
+        putc('\n');
+#endif
+        offset++;
+        if (offset > (424644 / 4))
+            offset = 0xb;
     }
 
     return 0;

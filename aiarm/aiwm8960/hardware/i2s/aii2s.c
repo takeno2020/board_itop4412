@@ -35,6 +35,7 @@ void aii2s0_init(void)
     EPLL_CON0 &= ~(0x1 << 31);
     EPLL_CON0 = EPLL_CON0 & ~(0x1ff << 16) & ~(0x3f << 8) & ~0x7;
     EPLL_CON0 = EPLL_CON0 | (0x60 << 16) | (0x3 << 8) | 0x2;
+    EPLL_CON1 &= ~0x1;
     // 音频系统时钟选择：Main clk, FOUT_EPLL
     ASS_CLK_SRC &= ~((0x3 << 2) | 0x1);
     ASS_CLK_SRC |= (0x0 << 2) | 0x1;
