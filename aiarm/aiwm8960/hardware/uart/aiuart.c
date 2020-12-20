@@ -20,6 +20,8 @@
 #include "aiexynos_4412.h"
 #include "aitypes.h"
 
+static u8 aiuart_hex_tbl[] = {'0','1','2','3','4','5','6','7','8','9',
+                              'A','B','C','D','E','F'};
 void aiuart_init(void)
 {
     // 设置GPA1_0为RX，GPA1_1为TX
@@ -56,4 +58,12 @@ char getc(void)
         return UART2.URXH;
     else
         return 0;
+}
+
+void aiuart_print_hex(const u8 ch)
+{
+    putc('0');
+    putc('x');
+    putc(aiuart_hex_tbl[ch >> 4]);
+    putc(aiuart_hex_tbl[ch & 0x0f]);
 }
