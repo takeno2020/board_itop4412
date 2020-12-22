@@ -50,6 +50,22 @@ void aii2s0_init(void)
     I2S0.MOD &= ~((0x3 << 8) | (0x3 << 3) | (0x3 << 1));
     I2S0.MOD |= (0x2 << 8) | (0x0 << 3) | (0x0 << 1);
 
+    // PSRAEN
+    I2S0.PSR |= 0x1 << 15;
+
+    // RCLKSRC选择I2SCLK
+    I2S0.MOD |= 0x1 << 10;
+    I2S0.MOD &= ~(0x1 << 11);
+    I2S0.MOD &= ~(0x1 << 12);
+    I2S0.MOD &= ~(0x3 << 5);
+    I2S0.MOD &= ~(0x3 << 13);
+    I2S0.MOD &= ~(0x3 << 18);
+    I2S0.MOD &= ~(0x3 << 20);
+    I2S0.MOD &= ~(0x3 << 26);
+    I2S0.MOD &= ~(0x3 << 24);
+    I2S0.MOD &= ~(0x1 << 28);
+    I2S0.MOD &= ~(0x3 << 30);
+
     // Un-reset IIS module、IIS interface active 
     I2S0.CON |= 0x1 << 31; 
 }

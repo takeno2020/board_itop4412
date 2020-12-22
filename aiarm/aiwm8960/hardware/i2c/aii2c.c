@@ -20,12 +20,12 @@
 #include "aiexynos_4412.h"
 #include "aii2c.h"
 
-#define    AI_WM8960_DEV_ADDR    0x34
+#define    AI_WM8960_DEV_ADDR    0x1a
 
 static u16 WM8960_REGVAL_TBL[56] = {
     0X0097,0X0097,0X0000,0X0000,0X0000,0X0008,0X0000,0X000A,
     0X01C0,0X0000,0X00FF,0X00FF,0X0000,0X0000,0X0000,0X0000,
-    0X0000,0X007B,0X0100,0X0032,0X0000,0X00C3,0X00C3,0X00C0,
+    0X0000,0X007B,0X0100,0X0032,0X0000,0X00C3,0X00C3,0X01C0,
     0X0000,0X0000,0X0000,0X0000,0X0000,0X0000,0X0000,0X0000,
     0X0100,0X0100,0X0050,0X0050,0X0050,0X0050,0X0000,0X0000,
     0X0000,0X0000,0X0040,0X0000,0X0000,0X0050,0X0050,0X0000,
@@ -50,7 +50,8 @@ void aii2c_init(void)
 
 void aii2c_write(u8 reg, u16 val)
 {
-    u16 data = (reg << 9) | (val & 0x1ff);
+    u16 aa = reg;
+    u16 data = (aa << 9) | (val & 0x1ff);
 
     // 对时钟源进行512倍预分频,打开IIC中断
     // 每次完成一个字节的收发后中断标志位会自动置位

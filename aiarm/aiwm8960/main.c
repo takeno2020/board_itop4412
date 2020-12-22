@@ -34,13 +34,16 @@ void aidelay_ms(unsigned int t)
 /************************************ main ************************************/
 int main(int argc, char *arg[])
 {
-    unsigned long offset = 0xb;
-    u32 *tmp = (u32 *)wave_data;
-    u32 tmp_s;
+    unsigned long offset = 0x0;
+    u32 *tmp = (u32 *)(wave_data + 44);
+#if 0
+    u16 tmp_s;
+#endif
 
     aii2c_init();
     aiwm8960_init();
     aii2s0_init();
+    aiwm8960_headphone_start();
     aii2s0_start();
 
     while (1) {
@@ -59,8 +62,8 @@ int main(int argc, char *arg[])
         putc('\n');
 #endif
         offset++;
-        if (offset > (424644 / 4))
-            offset = 0xb;
+        if (offset > 106485)
+            offset = 0x0;
     }
 
     return 0;

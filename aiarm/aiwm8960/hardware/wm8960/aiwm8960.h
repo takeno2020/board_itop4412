@@ -19,5 +19,6 @@
 #define AI_WM8960_H_
 
 void aiwm8960_init(void);
+void aiwm8960_headphone_start();
 
 #endif /* AI_WM8960_H_ */
